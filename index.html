@@ -10,7 +10,8 @@
   body{margin:0;background:var(--bg);color:var(--txt);font-family:"Microsoft JhengHei",system-ui,sans-serif;line-height:1.6}
   .wrap{max-width:1100px;margin:0 auto;padding:28px 18px 60px}
   h1{font-size:26px;margin:0 0 6px;border-bottom:3px solid var(--accent);padding-bottom:8px}
-  .sub{color:var(--muted);margin:0 0 26px}
+  .sub{color:var(--muted);margin:0 0 14px}
+  .method{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;padding:12px 16px;margin:0 0 26px;font-size:14.5px;line-height:1.7}
   h2{font-size:19px;margin:38px 0 14px;color:#333}
   .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;text-decoration:none;color:inherit;display:block;transition:box-shadow .15s}
@@ -46,7 +47,8 @@
 
 <h1>基於發電量與負載預測之家庭能源管理系統</h1>
 <p style="margin:-2px 0 4px;font-size:15px;color:#444">負載預測子系統 — 結果總覽</p>
-<p class="sub">本頁為系統中「負載預測」部分：單戶住宅不可轉移負載的未來 24 小時預測（96 步、每 15 分鐘），供家庭能源管理排程使用。以下為預測結果、成績與交接資料。</p>
+<p class="sub">本頁為系統中「負載預測」部分：單戶住宅不可轉移負載的未來 24 小時預測（96 步、每 15 分鐘），供家庭能源管理排程使用。圖中的「Taiwan scenario」指：資料來自 UCI 公開的法國單戶用電紀錄，假日與氣溫改採台灣（台北）設定、季節對齊台灣夏高冬低的型態，負載數值本身未更動。</p>
+<p class="method"><b>方法</b>　資料為 UCI 單戶用電紀錄（2006–2010，每分鐘），扣除可轉移分錶後得到不可轉移負載，重採樣為每 15 分鐘一點。未來 24 小時的 96 步各自訓練一個隨機森林（共 96 個），特徵為最近 24 小時負載、過去 7 天同時刻負載與每日統計、日曆與氣溫。以 6 折時序滾動驗證評估，並比較「每天 00:00 預測一次」與「每 15 分鐘更新」兩種使用方式。</p>
 
 <h2>成績（台灣情境、6 折平均）</h2>
 <table>
