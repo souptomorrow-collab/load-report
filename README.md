@@ -6,11 +6,9 @@
 | | 網址 |
 |---|---|
 | 🏠 結果總覽 | https://souptomorrow-collab.github.io/load-report/ |
-| 📊 完整預測報告 | https://souptomorrow-collab.github.io/load-report/report.html |
 
 ```
-index.html     結果總覽首頁
-report.html    完整預測報告（自包含單檔）
+index.html     結果頁（成績、所有圖與動畫、資料下載）
 results/       預測結果 CSV + 圖與動畫（見 results/README.md）
 GA_handoff/    GA 交接包（7 天日內滾動預測 + 真實值 + 說明）
 ```
