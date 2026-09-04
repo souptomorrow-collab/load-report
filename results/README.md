@@ -16,11 +16,10 @@
 | 檔案 | 內容 |
 |------|------|
 | `folds_curve.png` | 6 折各取一個代表日：實際 vs 日初單次(t0) vs 日內滾動 |
-| `feature_importance.png` | 逐 horizon 特徵重要度色階表（h=1/24/96 × 5 個特徵區塊） |
-| `feature_importance_bar.png` | 特徵重要度長條圖 |
-| `feature_importance_detail.png` | 個別特徵重要度 Top-18 |
-| `compare.png` | 逐 horizon+7 天 vs 傳統多輸出 RF：t0 / rolling MAE（6 折） |
-| `curves_t0.png` | 6 折代表日整天預測：實際 vs 多輸出 vs 逐 horizon |
+| `feature_importance_bar.png` | 各時步（h=1/24/96）特徵重要度長條圖（區塊加總） |
+| `feature_importance_detail.png` | 各時步個別特徵重要度 Top-18 |
+| `compare.png` | 直接多步+7 天 vs 傳統多輸出 RF：t0 / rolling MAE（6 折） |
+| `curves_t0.png` | 6 折代表日整天預測：實際 vs 多輸出 vs 直接多步 |
 | `rolling_snapshots.png` | 日內滾動 6 個時點快照 |
 | `rolling.gif` | 日內滾動動畫（每 15 分刷新未來 24h） |
 | `rolling6.gif` | 6 折代表日同步滾動動畫（2×3） |
@@ -29,5 +28,5 @@
 
 | 檔案 | 內容 |
 |------|------|
-| `train_run_log.txt` | `train.py` 完整輸出：資料筆數與缺值補法、6 折各折的日初單次／日內滾動成績（MAE / RMSE / R²）、6 折平均彙整、逐 horizon 區塊特徵重要度、各檔輸出訊息 |
+| `train_run_log.txt` | `train.py` 完整輸出：資料筆數與缺值補法、6 折各折的日初單次／日內滾動成績（MAE / RMSE / R²）、6 折平均彙整、直接多步 區塊特徵重要度、各檔輸出訊息 |
 | `predict_run_log.txt` | `predict.py` 輸出：載入模型、交接包列數與起訖時刻、雲端上傳筆數 |
