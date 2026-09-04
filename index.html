@@ -67,24 +67,11 @@
   <figure class="wide"><img src="results/figures/rolling6.gif" alt="rolling6"><figcaption>6 折代表日同步滾動動畫（2×3）</figcaption></figure>
 </div>
 
-<h2>結果資料檔</h2>
+<h2>實驗紀錄與輸出範例</h2>
 <ul class="files">
-  <li><a href="results/predictions.csv" download>predictions.csv</a><small>末折最後 30 天 h=1 預測 vs 實際（out-of-sample）</small></li>
-  <li><a href="results/rolling_forecast.csv" download>rolling_forecast.csv</a><small>最後一天日內滾動：96 個原點各帶未來 24h</small></li>
-  <li><a href="results/forecast_for_GA.csv" download>forecast_for_GA.csv</a><small>資料最後 96 點的一次性回測（非交接檔）</small></li>
-  <li><a href="results/preds.npz" download>preds.npz</a><small>6 折測試集完整預測矩陣 P/Y/t，供事後重畫</small></li>
-  <li><a href="results/train_run_log.txt">train_run_log.txt</a><small>訓練完整終端機輸出：6 折各折成績、平均彙整、特徵重要度</small></li>
-  <li><a href="results/predict_run_log.txt">predict_run_log.txt</a><small>預測／交接包產生的終端機輸出</small></li>
+  <li><a href="results/train_run_log.txt">train_run_log.txt</a><small>訓練完整終端機輸出：6 折各折成績、6 折平均彙整、各時步特徵重要度（數字可重現的原始紀錄）</small></li>
+  <li><a href="results/predictions.csv" download>predictions.csv</a><small>輸出範例：末折最後 30 天的 h=1 預測 vs 實際（out-of-sample）</small></li>
 </ul>
-
-<h2 id="ga">GA 交接包</h2>
-<ul class="files">
-  <li><a href="GA_handoff/load_forecast_rolling.csv" download>load_forecast_rolling.csv</a><small>7 天 × 每 15 分一個 refresh × 未來 96 步（64,512 列）</small></li>
-  <li><a href="GA_handoff/actual_load.csv" download>actual_load.csv</a><small>真實值，每時刻一列（767 列，事後比對用）</small></li>
-  <li><a href="GA_handoff/README.txt" download>README.txt</a><small>欄位定義、時間語意、使用注意</small></li>
-</ul>
-<div class="note">排程只能用預測值，真實值僅供事後畫圖比對。欄位定義見 README.txt。</div>
-
 <footer>本頁與所有檔案：<a href="https://github.com/souptomorrow-collab/load-report">github.com/souptomorrow-collab/load-report</a>（僅公開結果）</footer>
 </div>
 <div id="lb"><a id="lbopen" href="#" target="_blank" rel="noopener">開啟原始檔 ↗</a><img id="lbimg" alt=""></div>
