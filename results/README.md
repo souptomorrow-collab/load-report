@@ -18,8 +18,8 @@
 | `compare.png` | 本方法 vs 基準的 MAE（越低越好，6 折平均）：兩種評估方式各一組，橘色標示相對基準的改善幅度 |
 | `curves_rolling_compare.png` | 同樣 6 個代表日、「每 15 分鐘更新」模式：實際 vs 基準 vs 本方法，每格標 MAE 與改善幅度 |
 | `rolling_snapshots.png` | 日內滾動 6 個時點快照 |
-| `rolling.gif` | 日內滾動動畫（每 15 分刷新未來 24h） |
-| `rolling6.gif` | 6 折代表日同步滾動動畫（2×3） |
+| `rolling.mp4` | 日內滾動動畫（每 15 分鐘刷新未來 24h；MP4，約 0.6 MB） |
+| `rolling6.mp4` | 6 折代表日同步滾動動畫（2×3；MP4，約 1.6 MB） |
 
 ## 實驗紀錄
 
