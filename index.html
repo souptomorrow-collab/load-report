@@ -58,7 +58,7 @@
 <p class="muted" style="margin:-6px 0 12px;color:#666;font-size:13px">點任一張圖可放大檢視；放大後再點一次或按 Esc 關閉，右上角可開啟原始檔。</p>
 <div class="gallery">
   <figure class="wide"><img src="results/figures/folds_curve.png" alt="folds_curve"><figcaption>6 折各取一個代表日：實際 vs 每天 00:00 預測一次 vs 每 15 分鐘更新</figcaption></figure>
-  <figure class="wide"><img src="results/figures/compare.png" alt="compare"><figcaption>本方法 vs 基準：「每天 00:00 預測一次」與「每 15 分鐘更新」的 MAE（6 折平均）</figcaption></figure>
+  <figure class="wide"><img src="results/figures/compare.png" alt="compare"><figcaption>本方法 vs 基準的預測誤差 MAE（越低越好，6 折平均）：藍＝基準（一個模型一次預測 96 步），橘＝本方法（每一步各自一個模型＋7 天資訊）；每 15 分鐘更新時改善 22.3%</figcaption></figure>
   <figure class="wide"><img src="results/figures/feature_importance_bar.png" alt="feature_importance_bar"><figcaption>特徵重要度長條圖</figcaption></figure>
   <figure class="wide"><img src="results/figures/feature_importance_detail.png" alt="feature_importance_detail"><figcaption>個別特徵重要度 Top-18</figcaption></figure>
   <figure class="wide"><img src="results/figures/curves_t0.png" alt="curves_t0"><figcaption>6 折代表日、每天 00:00 一次預測整天：實際 vs 基準 vs 本方法</figcaption></figure>
