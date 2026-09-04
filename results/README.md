@@ -16,10 +16,10 @@
 | 檔案 | 內容 |
 |------|------|
 | `folds_curve.png` | 6 折各取一個代表日：實際 vs 日初單次(t0) vs 日內滾動 |
-| `feature_importance_bar.png` | 各時步（h=1/24/96）特徵重要度長條圖（區塊加總） |
-| `feature_importance_detail.png` | 各時步個別特徵重要度 Top-18 |
-| `compare.png` | 直接多步+7 天 vs 傳統多輸出 RF：t0 / rolling MAE（6 折） |
-| `curves_t0.png` | 6 折代表日整天預測：實際 vs 多輸出 vs 直接多步 |
+| `feature_importance_bar.png` | Per-step (h=1/24/96) feature importance, block sums |
+| `feature_importance_detail.png` | Per-step top-18 individual feature importance |
+| `compare.png` | Direct + 7-day lookback vs MIMO RF baseline：t0 / rolling MAE（6 折） |
+| `curves_t0.png` | 6 折代表日整天預測：Actual vs MIMO vs Direct |
 | `rolling_snapshots.png` | 日內滾動 6 個時點快照 |
 | `rolling.gif` | 日內滾動動畫（每 15 分刷新未來 24h） |
 | `rolling6.gif` | 6 折代表日同步滾動動畫（2×3） |

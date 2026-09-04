@@ -21,9 +21,9 @@
   th,td{border:1px solid var(--line);padding:8px 12px;text-align:left}
   th{background:#f1f0f7}
   td.num{text-align:right;font-variant-numeric:tabular-nums}
-  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:18px}
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(480px,1fr));gap:18px}
   figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px}
-  figure img{width:100%;border-radius:6px;display:block}
+  figure img{width:100%;border-radius:6px;display:block;cursor:zoom-in}
   figcaption{font-size:13px;color:var(--muted);margin-top:8px}
   figure.wide{grid-column:1/-1}
   ul.files{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:8px}
@@ -31,6 +31,11 @@
   ul.files a{color:var(--accent);text-decoration:none;font-weight:600}
   ul.files small{color:var(--muted);display:block}
   .note{background:#f3fbf6;border-left:4px solid var(--accent2);padding:10px 14px;border-radius:6px;font-size:14px;margin:14px 0}
+  #lb{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;z-index:99;cursor:zoom-out;padding:24px}
+  #lb.on{display:flex}
+  #lb img{max-width:96vw;max-height:92vh;width:auto;height:auto;border-radius:6px;box-shadow:0 8px 40px rgba(0,0,0,.6)}
+  #lb a{position:absolute;top:14px;right:18px;color:#fff;background:rgba(255,255,255,.15);padding:6px 12px;border-radius:6px;text-decoration:none;font-size:13px}
+  #lb a:hover{background:rgba(255,255,255,.3)}
   footer{margin-top:50px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:14px}
   footer a{color:var(--accent)}
 </style>
@@ -50,12 +55,13 @@
 </table>
 
 <h2>結果圖</h2>
+<p class="muted" style="margin:-6px 0 12px;color:#666;font-size:13px">點任一張圖可放大檢視；放大後再點一次或按 Esc 關閉，右上角可開啟原始檔。</p>
 <div class="gallery">
   <figure class="wide"><img src="results/figures/folds_curve.png" alt="folds_curve"><figcaption>6 折各取一個代表日：實際 vs 日初單次(t0) vs 日內滾動</figcaption></figure>
-  <figure><img src="results/figures/compare.png" alt="compare"><figcaption>直接多步+7 天 vs 多輸出 RF：t0 / rolling MAE（6 折）</figcaption></figure>
-  <figure><img src="results/figures/feature_importance_bar.png" alt="feature_importance_bar"><figcaption>特徵重要度長條圖</figcaption></figure>
-  <figure><img src="results/figures/feature_importance_detail.png" alt="feature_importance_detail"><figcaption>個別特徵重要度 Top-18</figcaption></figure>
-  <figure class="wide"><img src="results/figures/curves_t0.png" alt="curves_t0"><figcaption>6 折代表日整天預測：實際 vs 多輸出 vs 直接多步</figcaption></figure>
+  <figure><img src="results/figures/compare.png" alt="compare"><figcaption>Direct + 7-day lookback vs MIMO RF：t0 / rolling MAE（6 折）</figcaption></figure>
+  <figure class="wide"><img src="results/figures/feature_importance_bar.png" alt="feature_importance_bar"><figcaption>特徵重要度長條圖</figcaption></figure>
+  <figure class="wide"><img src="results/figures/feature_importance_detail.png" alt="feature_importance_detail"><figcaption>個別特徵重要度 Top-18</figcaption></figure>
+  <figure class="wide"><img src="results/figures/curves_t0.png" alt="curves_t0"><figcaption>6 折代表日整天預測：Actual vs MIMO vs Direct</figcaption></figure>
   <figure class="wide"><img src="results/figures/rolling_snapshots.png" alt="rolling_snapshots"><figcaption>日內滾動 — 6 個時點快照</figcaption></figure>
   <figure class="wide"><img src="results/figures/rolling.gif" alt="rolling"><figcaption>日內滾動動畫：每 15 分鐘刷新未來 24 小時</figcaption></figure>
   <figure class="wide"><img src="results/figures/rolling6.gif" alt="rolling6"><figcaption>6 折代表日同步滾動動畫（2×3）</figcaption></figure>
@@ -81,5 +87,16 @@
 
 <footer>本頁與所有檔案：<a href="https://github.com/souptomorrow-collab/load-report">github.com/souptomorrow-collab/load-report</a>（僅公開結果）</footer>
 </div>
+<div id="lb"><a id="lbopen" href="#" target="_blank" rel="noopener">開啟原始檔 ↗</a><img id="lbimg" alt=""></div>
+<script>
+(function(){
+  var lb=document.getElementById('lb'),im=document.getElementById('lbimg'),op=document.getElementById('lbopen');
+  document.querySelectorAll('.gallery figure img').forEach(function(el){
+    el.addEventListener('click',function(){im.src=el.src;op.href=el.src;lb.classList.add('on');});
+  });
+  lb.addEventListener('click',function(e){if(e.target!==op){lb.classList.remove('on');im.src='';}});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){lb.classList.remove('on');im.src='';}});
+})();
+</script>
 </body>
 </html>
