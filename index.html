@@ -18,7 +18,9 @@
   .card:hover{box-shadow:0 4px 16px rgba(0,0,0,.08)}
   .card b{display:block;font-size:16px;color:var(--accent);margin-bottom:4px}
   .card span{font-size:13px;color:var(--muted)}
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
   table{border-collapse:collapse;width:100%;background:var(--card);font-size:14px}
+  td:first-child,th:first-child{white-space:nowrap}
   th,td{border:1px solid var(--line);padding:8px 12px;text-align:left}
   th{background:#f1f0f7}
   td.num{text-align:right;font-variant-numeric:tabular-nums}
@@ -47,15 +49,16 @@
 
 <h1>基於發電量與負載預測之家庭能源管理系統</h1>
 <p style="margin:-2px 0 4px;font-size:15px;color:#444">負載預測子系統 — 結果總覽</p>
-<p class="sub">本頁為系統中「負載預測」部分：單戶住宅不可轉移負載的未來 24 小時預測（96 步、每 15 分鐘），供家庭能源管理排程使用。圖中的「Taiwan scenario」指：資料來自 UCI 公開的法國單戶用電紀錄，假日與氣溫改採台灣（台北）設定、季節對齊台灣夏高冬低的型態，負載數值本身未更動。</p>
+<p class="sub">本頁為系統中「負載預測」部分：單戶住宅不可轉移負載的未來 24 小時預測（96 步、每 15 分鐘），供家庭能源管理排程使用。圖中的「Taiwan scenario」指：資料來自 UCI 公開的法國單戶用電紀錄，假日與氣溫改採台灣（台北）設定、季節對齊台灣夏高冬低的型態；負載數值只做時間平移、夏季出門日保留原位、國定假日換成鄰近週末的中位數模板，沒有縮放。</p>
 <p class="method"><b>方法</b>　資料為 UCI 單戶用電紀錄（2006–2010，每分鐘），扣除可轉移分錶後得到不可轉移負載，重採樣為每 15 分鐘一點。未來 24 小時的 96 步各自訓練一個隨機森林（共 96 個），特徵為最近 24 小時負載、過去 7 天同時刻負載與每日統計、日曆與氣溫。以 6 折時序滾動驗證評估，並比較「每天 00:00 預測一次」與「每 15 分鐘更新」兩種使用方式。</p>
 
 <h2>成績（台灣情境、6 折平均）</h2>
-<table>
+<div class="tablewrap"><table>
   <tr><th>模式</th><th>MAE (kW)</th><th>RMSE (kW)</th><th>R²(flatten)</th><th>R²(per-slot)</th></tr>
-  <tr><td>日內滾動（每 15 分鐘用最新觀測重預測）</td><td class="num">0.123</td><td class="num">0.200</td><td class="num">+0.70</td><td class="num">+0.46</td></tr>
-  <tr><td>日初單次（每天 00:00 一次預測整天）</td><td class="num">0.221</td><td class="num">0.318</td><td class="num">+0.21</td><td class="num">−0.37</td></tr>
-</table>
+  <tr><td>每 15 分鐘更新</td><td class="num">0.123</td><td class="num">0.200</td><td class="num">+0.70</td><td class="num">+0.46</td></tr>
+  <tr><td>每天 00:00 一次</td><td class="num">0.221</td><td class="num">0.318</td><td class="num">+0.21</td><td class="num">−0.37</td></tr>
+</table></div>
+<p class="muted" style="margin:6px 0 0;font-size:13px;color:#666">每 15 分鐘更新＝每 15 分鐘用最新觀測重新預測未來 24 小時；每天 00:00 一次＝當天 00:00 預測整天、不再更新。MAE / RMSE 越低越好，R² 越高越好。</p>
 
 <h2>結果圖</h2>
 <p class="muted" style="margin:-6px 0 12px;color:#666;font-size:13px">點任一張圖可放大檢視；放大後再點一次或按 Esc 關閉，右上角可開啟原始檔。</p>
